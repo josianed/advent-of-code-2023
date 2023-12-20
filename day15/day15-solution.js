@@ -193,7 +193,7 @@ lensData.forEach((lens) => {
   }
 });
 
-console.log("boxes", boxes);
+// console.log("boxes", boxes);
 
 // find focusing power of all lens
 // formula: boxNumber + 1 * lensPositionInBox * lensFocalLength
