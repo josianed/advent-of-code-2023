@@ -4,7 +4,6 @@ const data = fs.readFileSync("./day3_input.txt", {
   encoding: "utf8",
   flag: "r",
 });
-// console.log("data", data);
 
 /* 
 467..114..
@@ -51,6 +50,7 @@ for (let row = 0; row < grid.length; row++) {
   for (let column = 0; column < grid[row].length; column++) {
     // check if item is a number
     const isNumber = !Number.isNaN(parseInt(grid[row][column]));
+
     // check all neighbours to see if adjacent to a symbol
     // need to make sure indexes are within grid's bounds
     let neighbours = [];
@@ -90,7 +90,7 @@ for (let row = 0; row < grid.length; row++) {
       });
       // if next character exists and isn't a number
       if (
-        column + 1 < grid[row].length &&
+        column + 1 <= grid[row].length &&
         Number.isNaN(parseInt(grid[row][column + 1]))
       ) {
         // we processed the last digit in the current number
@@ -108,9 +108,11 @@ for (let row = 0; row < grid.length; row++) {
   }
 }
 
-const sumOfSymbolNumber = adjacentNumbers.reduce((acc, curr) => {
-  return acc + curr;
-}, 0);
+let sumOfSymbolNumber = 0;
+adjacentNumbers.forEach((num) => (sumOfSymbolNumber += num));
+// const sumOfSymbolNumber = adjacentNumbers.reduce((acc, curr) => {
+//   return acc + curr;
+// }, 0);
 
 console.log("sumOfSymbolNumber", sumOfSymbolNumber);
-// 3248021
+// 535078
